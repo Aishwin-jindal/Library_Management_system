@@ -7,6 +7,7 @@ import BooksDirectory from './pages/BooksDirectory'
 import BookDetails from './pages/BookDetails'
 import UserManagement from './pages/UserManagement'
 import Reports from './pages/Reports'
+import Settings from './pages/Settings'
 
 function App() {
   const isAuthenticated = !!localStorage.getItem('token');
@@ -23,6 +24,7 @@ function App() {
         <Route path="/books/:id" element={<BookDetails />} />
         <Route path="/users" element={<UserManagement />} />
         <Route path="/reports" element={<Reports />} />
+        <Route path="/settings" element={<Settings />} />
       </Routes>
     </Router>
   )

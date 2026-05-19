@@ -47,14 +47,16 @@ const Sidebar = () => {
 
       <div style={{ padding: '0 16px', marginTop: 'auto', marginBottom: '24px' }}>
         <Link 
-          to="#" 
+          to="/settings" 
           className="btn" 
           style={{ 
             justifyContent: 'flex-start', 
             gap: '12px',
             padding: '12px 16px',
-            color: 'var(--text-secondary)',
+            backgroundColor: path === '/settings' ? 'var(--background-color)' : 'transparent',
+            color: path === '/settings' ? 'var(--text-primary)' : 'var(--text-secondary)',
             width: '100%',
+            borderRadius: 'var(--radius-md)',
             fontSize: '0.875rem'
           }}
         >
