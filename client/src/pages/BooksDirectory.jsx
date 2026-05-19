@@ -42,7 +42,13 @@ const BooksDirectory = () => {
   ];
 
   const filteredBooks = books.filter(book => {
-    const matchesCategory = selectedCategory === 'All' || book.category.toLowerCase() === selectedCategory.toLowerCase();
+    if (!book.category) return false;
+    
+    // Normalize both categories by removing spaces, converting & to and, and handling singular/plural
+    const catBook = book.category.toLowerCase().replace('&', 'and').replace(/\s+/g, '').replace(/ies$/, 'y').replace(/s$/, '').trim();
+    const catSel = selectedCategory.toLowerCase().replace('&', 'and').replace(/\s+/g, '').replace(/ies$/, 'y').replace(/s$/, '').trim();
+    
+    const matchesCategory = selectedCategory === 'All' || catBook === catSel || catBook.startsWith(catSel) || catSel.startsWith(catBook);
     const matchesSearch = book.title.toLowerCase().includes(searchTerm.toLowerCase()) || book.author.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;
   });
